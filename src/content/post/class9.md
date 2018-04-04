@@ -14,10 +14,10 @@ slug = "class9"
 ### PDF Malware Classifiers
 
 ## Hidost: A Static Machine-Learning-Based Detector of Malicious Files
-There has been a substantial amount of work on the detection of no-executable malware which includes static, dynamic and combined methods. Although static methods performs in orders of magnitude faster, their applicability has been limited to only specific file formats. Hidost introduces the static machine-learning-based malware detection system to operate multiple file formats like pdf or swf having hierarchial document structure. 
+There has been a substantial amount of work on the detection of no-executable malware which includes static, dynamic and combined methods. Although static methods perform in orders of magnitude faster, their applicability has been limited to only specific file formats. Hidost introduces the static machine-learning-based malware detection system to operate multiple file formats like pdf or swf having hierarchical  document structure. 
 
-### Hierarchiacally structured file formats
-File formats are developed as a mean to store the physical representation of certain information but all of them do not have logical structure. For example, some formats like text files do not have any logical structure but others e.g.; HTML files represents a logical relationships between html elements. Following two figures shows the hierarchial structure of pdf and  swf files respectively.
+### Hierarchically structured file formats
+File formats are developed as a mean to store the physical representation of certain information but all of them do not have logical structure. For example, some formats like text files do not have any logical structure but others e.g.; HTML files represents a logical relationships between html elements. Following two figures shows the hierarchical structure of pdf and  swf files respectively.
 
 <p align="center">
 <img src="/images/pdf_structure.png" width="400" >
@@ -30,7 +30,7 @@ File formats are developed as a mean to store the physical representation of cer
 </p>
 
 ### Distinguishing benign from malicious files
-In a pdf structural tree, a path is defined as as sequence of edges starting in the Catalog dictionary and ending with an objject of primitive type. For example, as we see in the above figure of pdf structural tree, there s a path from the root path from the root, i.e., leftmost, node
+In a pdf structural tree, a path is defined as a sequence of edges starting in the Catalog dictionary and ending with an object of primitive type. For example, as we see in the above figure of pdf structural tree, there s a path from the root path from the root, i.e., leftmost, node
 through the edges named /Pages and /Count to the terminal node with the value 2. This definition of a path in the PDF document structure, which is denoted as PDF structural path, plays a central role in Hidost approach. Paths are printed as a sequence of all edge labels encountered during path traversal starting from the root node and ending in the leaf node. The path from our earlier example
 would be printed as /Pages/Count. 
 
@@ -46,7 +46,7 @@ Following is a list of example structural paths of real world benign files: <br/
 /Pages/Count <br/>
 /PageLayout <br/>
 
-Presence of these structural paths in a file indicates that it is benign. Alternatively, absence of these paths is indicative that the file may be malicious. In addition, malicious files are not likely to contain metadata in order to minimize file size, they do not jump to a page in the document when it is opened and are not well-formed so they are missing paths such as /Type and /Pages/Count.
+Presence of these structural paths in a file indicates that it is benign. Alternatively, the absence of these paths is indicative to the fact that the file may be malicious. In addition, malicious files are not likely to contain metadata in order to minimize file size, they do not jump to a page in the document when it is opened and are not well-formed so they are missing paths such as /Type and /Pages/Count.
 The following is a list of structural paths from real-world malicious PDF files:<br/>
 /AcroForm/XFA <br/>
 /Names/JavaScript <br/>
@@ -68,7 +68,7 @@ The system design of Hidost consists of six stages: structure extraction, struct
 </p>
 
 ### File structure extraction
-In this stage, files are transformed into more abstract representation (logical structure) i.e.; into a structural multimap. Multimap is basically a map with associations between every structural path to the set of all leafs that lie on a given path.
+In this stage, files are transformed into more abstract representation (logical structure) i.e.; into a structural multimap. Multimap is basically a map with associations between every structural path to the set of all leaves that lie on a given path.
 The concept is similar to map but you have multiple leafs as we see in path mediabox in the following figure.
  
 <p align="center">
@@ -77,7 +77,7 @@ The concept is similar to map but you have multiple leafs as we see in path medi
 </p>
 
 ### Structural path consolidation
-There may be cases in which semantically equivalent but syntactically different structures can avoid detection. In Hidost, heuristic technique to consolidate structural paths to reduce polymorphic paths.  For example, /Pages/Kids/Resources and /Pages/Kids/Kids/Resources
+There may be cases in which semantically equivalent, but syntactically different structures can avoid detection. In Hidost, heuristic technique to consolidate structural paths to reduce polymorphic paths.  For example, /Pages/Kids/Resources and /Pages/Kids/Kids/Resources
 can be reduced to /Pages/Resources.
 
 ### Feature Selection
@@ -92,10 +92,10 @@ In the vectorization stage, structural multimaps are first replaced by structura
 </p>
 
 ### Learning and Classification
-They have used Random Forest implementation at this stage. But, it can be any classifier as per reader's choice. 
+The authors have used Random Forest implementation at this stage. But, it can be any classifier as per reader's choice. 
 
 ### Experimental evaluation
-The authors run their experiment on two datasets, one for PDF and one for SWF file formats. Both of the datasets were collected from [VirusTotal](https://www.virustotal.com/). A file is considered as malicious if it is labeled as malicious by at least five engines. Alternatively, a file is labeled benign by all antivirus engines. Following figure showa that HiDost performs better that the antivirus engines in the VirusTotal. It should be mentioned that VirusTotal may not contain the most efficient antivirus developed by the proprietor company.
+The authors run their experiment on two datasets, one for PDF and one for SWF file formats. Both of the datasets were collected from [VirusTotal](https://www.virustotal.com/). A file is considered as malicious if it is labeled as malicious by at least five engines. Alternatively, a file is labeled benign by all antivirus engines. Following figure shows that HiDost performs better that the antivirus engines in the VirusTotal. It should be mentioned that VirusTotal may not contain the most efficient antivirus developed by the proprietor company.
 
 <p align="center">
 <img src="/images/experiment.png" width="500" >
