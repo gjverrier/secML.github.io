@@ -129,3 +129,7 @@ We've explored the current state of adversarial malware detection including Hido
 
 > R. Sommer and V. Paxson, "Outside the Closed World: On Using Machine Learning for Network Intrusion Detection," 2010 IEEE Symposium on Security and Privacy, Oakland, CA, USA, 2010, pp. 305-316.
 https://doi.org/10.1109/SP.2010.25 [[PDF]] (http://ieeexplore.ieee.org/document/5504793/)
+
+>Nedim Šrndić and Pavel Laskov, "Hidost: a static machine-learning-based detector of malicious files," Retrieved from https://link.springer.com/content/pdf/10.1186%2Fs13635-016-0045-0.pdf [[PDF]] https://link.springer.com/content/pdf/10.1186%2Fs13635-016-0045-0.pdf
+
+
