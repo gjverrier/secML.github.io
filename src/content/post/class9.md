@@ -86,11 +86,6 @@ Feature Selection is used to limit the rare features once again similar to many 
 ### Vectorization
 In the vectorization stage, structural multimaps are first replaced by structural maps—ordinary map data structures that map a structural path to a corresponding single numeric value. To this end, every set of values corresponding to one structural path in the multimap is reduced to its median.
 
-<p align="center">
-<img src="/images/vectorization.png" width="100" >
-<br> <b>Figure:</b> Reduction to median
-</p>
-
 ### Learning and Classification
 The authors have used Random Forest implementation at this stage. But, it can be any classifier as per reader's choice. 
 
